@@ -1,0 +1,42 @@
+body {
+    background-color: rgba(13, 13, 69, 0.883);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    max-width: 400px;
+    min-height: 600px;
+    margin-top: 250px;
+    border: 1px black solid;
+    border-radius: 5px;
+    background-color: rgb(25, 75, 39);
+}
+
+.screen {
+    background-color: dimgray;
+    min-width: 350px;
+    min-height: 100px;
+    margin: 25px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    min-width: 90px;
+    min-height: 80px;
+}
+
+.buttons {
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+#equals {
+    flex: 2;
+}
