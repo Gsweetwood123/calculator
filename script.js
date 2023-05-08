@@ -15,9 +15,20 @@ let secondNum;
 
 //Button functions
 numberBtns.forEach(btn => btn.addEventListener(`click`, () => {
-    inputScreen.textContent = inputScreen.textContent + btn.textContent;
+    if (inputScreen.textContent.length < 10) {
+        inputScreen.textContent = inputScreen.textContent + btn.textContent;
+    } else {
+        return;
+    }
 }));
 
+decimalBtn.addEventListener(`click`, () => {
+    if (inputScreen.textContent.includes(`.`)) {
+        return;
+    } else {
+        inputScreen.textContent = inputScreen.textContent + decimalBtn.textContent;
+    }
+})
 
 percentBtn.addEventListener(`click`, () => {
     inputScreen.textContent = (inputScreen.textContent / 100);
