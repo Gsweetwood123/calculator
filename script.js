@@ -1,4 +1,5 @@
 // Set variables
+const allBtns = document.querySelectorAll(`button`);
 const numberBtns =  document.querySelectorAll(`.number`);
 const operatorBtns = document.querySelectorAll(`.operator`);
 const inputScreen = document.querySelector(`#input`);
@@ -12,12 +13,26 @@ let operator;
 let firstNum;
 let secondNum;
 
+allBtns.forEach(btn => btn.addEventListener(`hover`, () => {
+    btn.classList.add(`.button_hover`);
+}))
 
 //Button functions
 numberBtns.forEach(btn => btn.addEventListener(`click`, () => {
-    inputScreen.textContent = inputScreen.textContent + btn.textContent;
+    if (inputScreen.textContent.length < 10) {
+        inputScreen.textContent = inputScreen.textContent + btn.textContent;
+    } else {
+        return;
+    }
 }));
 
+decimalBtn.addEventListener(`click`, () => {
+    if (inputScreen.textContent.includes(`.`)) {
+        return;
+    } else {
+        inputScreen.textContent = inputScreen.textContent + decimalBtn.textContent;
+    }
+})
 
 percentBtn.addEventListener(`click`, () => {
     inputScreen.textContent = (inputScreen.textContent / 100);
