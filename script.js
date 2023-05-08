@@ -13,8 +13,20 @@ let operator;
 let firstNum;
 let secondNum;
 
-allBtns.forEach(btn => btn.addEventListener(`hover`, () => {
-    btn.classList.add(`.button_hover`);
+allBtns.forEach(btn => btn.addEventListener(`mouseenter`, () => {
+    btn.classList.add(`button_hover`);
+}))
+
+allBtns.forEach(btn => btn.addEventListener(`mouseout`, () => {
+    btn.classList.remove(`button_hover`);
+}))
+
+allBtns.forEach(btn => btn.addEventListener(`mousedown`, () => {
+    btn.style.transform = `scale(.9)`;
+}))
+
+allBtns.forEach(btn => btn.addEventListener(`mouseup`, () => {
+    btn.style.transform = `scale(1)`;
 }))
 
 //Button functions
