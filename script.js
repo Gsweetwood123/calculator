@@ -37,28 +37,28 @@ operatorBtns.forEach(btn => btn.addEventListener(`click`, () => {
     topScreen.textContent = inputScreen.textContent + `   ` + btn.textContent;
     inputScreen.textContent = ``;
     operator = btn.textContent;
+    operatorBtns.forEach (btn => btn.disabled = true)
 }));
 
 equalBtn.addEventListener(`click`, () => {
-    secondNum = inputScreen.textContent;
+    secondNum = +inputScreen.textContent;
+    operatorBtns.forEach (btn => btn.disabled = false)
     switch(operator) {
         case `x`:
-            inputScreen.textContent = multipy(firstNum, secondNum);
-            topScreen.textContent = ``;
+            topScreen.textContent = multipy(firstNum, secondNum);
+            inputScreen.textContent = ``;
             break;
-            case `/`:
-                inputScreen.textContent = divide(firstNum, secondNum);
-                topScreen.textContent = ``;
-                break;
-                case `+`:
-            inputScreen.textContent = add(firstNum, secondNum);
-            firstNum = inputScreen.textContent;
-            topScreen.textContent = ``;
+        case `/`:
+            topScreen.textContent = divide(firstNum, secondNum);
+            inputScreen.textContent = ``;
             break;
-            case `-`:
-                inputScreen.textContent = subtract(firstNum, secondNum);
-            firstNum = inputScreen.textContent;
-            topScreen.textContent = ``;
+        case `+`:
+            topScreen.textContent = add(firstNum, secondNum);
+            inputScreen.textContent = ``;
+            break;
+        case `-`:
+            topScreen.textContent = subtract(firstNum, secondNum);
+            inputScreen.textContent = ``;
             break;
         }
     });
@@ -70,7 +70,7 @@ const multipy = (a, b) => {
 };
 
 const divide = (a,b) => {
-    if (b === `0`) {
+    if (b === 0) {
         return `Stop it.`;
     }
         return a/b;
