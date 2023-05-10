@@ -72,20 +72,20 @@ equalBtn.addEventListener(`click`, () => {
     operatorBtns.forEach (btn => btn.disabled = false)
     switch(operator) {
         case `x`:
-            topScreen.textContent = multipy(firstNum, secondNum);
-            inputScreen.textContent = ``;
+            inputScreen.textContent = multipy(firstNum, secondNum);
+            topScreen.textContent = ``;
             break;
         case `/`:
-            topScreen.textContent = divide(firstNum, secondNum);
-            inputScreen.textContent = ``;
+            inputScreen.textContent = divide(firstNum, secondNum);
+            topScreen.textContent = ``;
             break;
         case `+`:
-            topScreen.textContent = add(firstNum, secondNum);
-            inputScreen.textContent = ``;
+            inputScreen.textContent = add(firstNum, secondNum);
+            topScreen.textContent = ``;
             break;
         case `-`:
-            topScreen.textContent = subtract(firstNum, secondNum);
-            inputScreen.textContent = ``;
+            inputScreen.textContent = subtract(firstNum, secondNum);
+            topScreen.textContent = ``;
             break;
         }
     });
@@ -110,3 +110,69 @@ const add = (a,b) => {
 const subtract = (a,b) => {
     return a - b;
 };
+
+window.addEventListener(`keypress`, (event) => {
+    if (inputScreen.textContent.length < 10 && event.key < 10) {
+        inputScreen.textContent = inputScreen.textContent + event.key
+    } else {
+        switch(event.key) {
+            case `+` :
+                firstNum = +inputScreen.textContent;
+                topScreen.textContent = inputScreen.textContent + `   ` + event.key;
+                inputScreen.textContent = ``;
+                operator = event.key;
+                operatorBtns.forEach (btn => btn.disabled = true)
+                break;
+            case `-` :
+                firstNum = +inputScreen.textContent;
+                topScreen.textContent = inputScreen.textContent + `   ` + event.key;
+                inputScreen.textContent = ``;
+                operator = event.key;
+                operatorBtns.forEach (btn => btn.disabled = true)
+                break;
+            case `*` :
+                firstNum = +inputScreen.textContent;
+                topScreen.textContent = inputScreen.textContent + `   ` + `x`;
+                inputScreen.textContent = ``;
+                operator = `x`;
+                operatorBtns.forEach (btn => btn.disabled = true)
+                break;
+            case `/` :
+                firstNum = +inputScreen.textContent;
+                topScreen.textContent = inputScreen.textContent + `   ` + event.key;
+                inputScreen.textContent = ``;
+                operator = event.key;
+                operatorBtns.forEach (btn => btn.disabled = true)
+                break;
+            case `.`:
+                if (inputScreen.textContent.includes(`.`)) {
+                    return;
+                } else {
+                    inputScreen.textContent = inputScreen.textContent + decimalBtn.textContent;
+                };
+                break;
+            case `Enter` :
+                secondNum = +inputScreen.textContent;
+                operatorBtns.forEach (btn => btn.disabled = false);
+                switch(operator) {
+                    case `x`:
+                        inputScreen.textContent = multipy(firstNum, secondNum);
+                        topScreen.textContent = ``;
+                        break;
+                    case `/`:
+                        inputScreen.textContent = divide(firstNum, secondNum);
+                        topScreen.textContent = ``;
+                        break;
+                    case `+`:
+                        inputScreen.textContent = add(firstNum, secondNum);
+                        topScreen.textContent = ``;
+                        break;
+                    case `-`:
+                        inputScreen.textContent = subtract(firstNum, secondNum);
+                        topScreen.textContent = ``;
+                        break;
+                    }
+                break;
+    }
+    }
+})
